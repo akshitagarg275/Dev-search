@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>Projects</h1>
+    <!-- {% if number > 10 %}
+        <p>Number is greater than 10</p>
+    {% elif number == 10  %}
+    {% else %}
+        <p>Number is {{number}}</p>
+    {% endif %}
+     -->
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Project</th>
+            <th>Votes</th>
+            <th>Ratio</th>
+        </tr>
+        {% for proj in projects %}
+            <tr>
+                <td>{{proj.id}}</td>
+                <td>{{proj.title}}</td>
+                <td>{{proj.vote_total}}</td>
+                <td>{{proj.vote_ratio}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <ul>
+        {% for proj in projects %}
+            <li><a href="{% url 'project' proj.id %}">Name: {{proj.title}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
